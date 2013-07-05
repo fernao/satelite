@@ -1,0 +1,5 @@
+##
+
+Simply place this folder in a computer that stays connected - like a server - and set a cron job to run every hour or in a user defined interval.
+
+

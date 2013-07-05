@@ -4,14 +4,14 @@
 # TODO: mensagens de erro no log
 
 # confs
-BASE_FOLDER='/var/www/satelite'
+BASE_FOLDER=`pwd`
 LOG_FOLDER=$BASE_FOLDER/'logs'
 NOW=`date +%Y_%m_%d_%H.%M`
 NOW_JSON=`date +%Y-%m-%d-%H-%m`
 IMAGEM=$NOW.jpg
 DEFAULT_THUMB_SIZE=x150
 DATA_JSON=$BASE_FOLDER/data.json
-
+HASH=md5sum
 
 # inicializa instancia 
 source $1
@@ -36,12 +36,12 @@ LAST_IMG=`cat $IMAGES_FOLDER/LAST_IMG`
 echo $LAST_IMG
 
 cp $LAST_IMG imagem.jpg
-HASH_LAST=`md5sum imagem.jpg`
+HASH_LAST=`$HASH imagem.jpg`
 
 # baixa arquivo como imagem
 wget -nv -S $SRC -O imagem.jpg
 # faz checagem de hash da ultima imagem
-HASH_NOW=`md5sum imagem.jpg`
+HASH_NOW=`$HASH imagem.jpg`
 
 # se verboso
 # echo $HASH_LAST
