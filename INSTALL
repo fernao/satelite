@@ -1,5 +1,21 @@
-##
+## Install
 
-Simply place this folder in a computer that stays connected - like a server - and set a cron job to run every hour or in a user defined interval.
+Simply place this folder in a computer that stays connected - like a server - and set a cron job to run every hour or in a user defined interval:
+
+$ crontab -e
+
+1 * * * * /path/to/satelite/satelite.sh
+
+## Configuring websites to grab images
+
+For each single image that you want to grab, add a website-imagename.conf file under the "conf" file. The file is simple, and takes only two arguments:
+
+IMAGES_FOLDER=""   # the name of the folder where the images will be stored
+SRC=""   # the url of the images
+
+
+## Additional support or bug report
+
+For additional support or bug report, PLEASE access https://github.com/fernao/satelite and post an issue. =D
 
 
