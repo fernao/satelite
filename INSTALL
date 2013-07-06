@@ -1,4 +1,13 @@
-## Install
+## Requirements
+
+Satelite is a bash script, so it must be run specially under GNU/Linux or Unix compatible system. The dependencies are the following:
+- bash
+- wget
+- cron
+- md5sum / sha256 etc
+
+
+## Installation
 
 Simply place this folder in a computer that stays connected - like a server - and set a cron job to run every hour or in a user defined interval:
 
