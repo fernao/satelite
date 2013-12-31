@@ -1,4 +1,5 @@
-
-* Implementar visualização de imagens / player (jquery)
-* Aprimorar configurações e deixar código mais reutilizável
-* Melhorar checagens de erros
+* Implement image player with jQuery
+* Improve configurations
+* Improve code in order to become more reusable
+* Improve error checking
+* Add interval configuration in order to automate cronjob
