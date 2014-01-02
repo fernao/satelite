@@ -1,0 +1,5 @@
+{
+ "name": "your-source",
+ "description": "Source institution / satellite name / whatever",
+ "src": "http://your-url.com/image.jpg"
+}

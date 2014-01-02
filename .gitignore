@@ -3,4 +3,7 @@
 *.#*
 *.swp
 *.log
+images/*
 imagens/*
+logs/*
+sources/*conf
