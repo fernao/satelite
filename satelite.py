@@ -31,6 +31,9 @@ class Satelite:
         self.logger.addHandler(fh)
 
     def get_default_config(self):
+
+        BASE_PATH = "/var/www/satelite"
+        os.chdir(BASE_PATH)
         f = open("conf.json", "r")
         config = json.loads(f.read())
         
@@ -118,7 +121,8 @@ class Satelite:
         if self.check_new_image(tmp_file, last_image):
             self.save_image(dirname, tmp_file)
         else:
-            print "imagem igual"
+            os.remove(tmp_file)
+            print "imagem igual: " + source_cfg['description']
 
 
 s = Satelite()
