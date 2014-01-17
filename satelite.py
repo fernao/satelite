@@ -89,7 +89,7 @@ class Satelite:
 
     def save_image(self, dirname, tmp_file):
         # salva imagem no local certo
-        now = time.localtime()[0:6]
+        now = time.strftime("%Y, %m, %d, %H, %M").split()
         imagename = str(now[0]) + "_" + str(now[1]) + "_" + str(now[2]) + "_" + str(now[3]) + "-" + str(now[4]) + ".jpg"
         filename = os.path.join(dirname, imagename)
         
