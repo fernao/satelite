@@ -1,4 +1,4 @@
-pyimport sys, os, re
+import sys, os, re
 import urllib
 import time
 import json
