@@ -32,7 +32,7 @@ class Satelite:
 
     def get_default_config(self):
 
-        BASE_PATH = "/var/www/satelite"
+        BASE_PATH = os.getcwd()
         os.chdir(BASE_PATH)
         f = open("conf.json", "r")
         config = json.loads(f.read())
