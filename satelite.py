@@ -1,8 +1,8 @@
 import sys, os, re
-import urllib
 import time
 import json
 import logging
+import urllib.request
 
 class Satelite:
     
@@ -74,15 +74,15 @@ class Satelite:
     def download_image(self, url, dirname):
         # baixa imagens e grava em arquivo
         try:
-            image_dwl = urllib.urlopen(url)
-        except HTTPError, e:
+            image_dwl = urllib.request.urlopen(url)
+        except Exception as e:
             self.logger.error("Erro HTTP ao baixar imagem: ", e.code, url)
-        except URLError, e:
+        except Exception as e:
             self.logger.error("Erro de URL ao baixar imagem:", e.reason, url)
         
         # grava em temporario
         tmp_file = os.path.join(dirname, 'tmp-image.jpg')
-        f = open(tmp_file, "w")
+        f = open(tmp_file, "wb")
         f.write(image_dwl.read())
         f.close()
         return tmp_file
@@ -122,7 +122,7 @@ class Satelite:
             self.save_image(dirname, tmp_file)
         else:
             os.remove(tmp_file)
-            print "imagem igual: " + source_cfg['description']
+            print("imagem igual: " + source_cfg['description'])
 
 
 s = Satelite()
