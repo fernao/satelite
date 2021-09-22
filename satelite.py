@@ -3,12 +3,12 @@ import time
 import json
 import logging
 import urllib.request
+import config
 
 class Satelite:
     
     def __init__(self):
         self.get_default_config()
-        
         # le todas as configuracoes
         sourcelist = os.listdir('sources')
         sources = [source for source in sourcelist if re.search('json$', source)]
@@ -21,7 +21,7 @@ class Satelite:
         # TODO: logs nao funcionam direito ainda
         self.logger = logging.getLogger(__name__)
         
-        logfile = os.path.join(self.config['logs_folder'], source['name'])
+        logfile = os.path.join(config.logs_folder, source['name'])
         
         fh = logging.FileHandler(logfile)
         fh.setLevel(logging.ERROR)
@@ -31,29 +31,25 @@ class Satelite:
         self.logger.addHandler(fh)
 
     def get_default_config(self):
-
-        BASE_PATH = os.getcwd()
+        BASE_PATH = os.path.dirname(os.path.abspath(__file__))
         os.chdir(BASE_PATH)
-        f = open("conf.json", "r")
-        config = json.loads(f.read())
         
         ###  tenta na primeira vez, se nao tiver, cria        
         # images folder
         try:
-            os.listdir(config['images_folder'])
+            os.listdir(config.images_folder)
         except OSError:
-            os.mkdir(config['images_folder'])
+            os.mkdir(config.images_folder)
         # logs folder
         try:
-            os.listdir(config['logs_folder'])
+            os.listdir(config.logs_folder)
         except OSError:
-            os.mkdir(config['logs_folder'])
+            os.mkdir(config.logs_folder)
         
-        self.config = config
-    
+
     def handle_dir(self, dirname):
         # cria diretorio se necessario
-        dirname = os.path.join(self.config['images_folder'], dirname)
+        dirname = os.path.join(config.images_folder, dirname)
         try:
             os.listdir(dirname)
         except OSError:
